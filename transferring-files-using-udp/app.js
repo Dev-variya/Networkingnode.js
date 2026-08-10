@@ -4,7 +4,7 @@ import { writeFile } from "node:fs/promises";
 
 const socket = dgram.createSocket("udp4");
 
-const writeStream = createWriteStream("numbers.mp4"); //that file download on current folder 
+const writeStream = createWriteStream("Documents.pdf"); //that file download on current folder or mantion path with provideing name
 socket.on("message", async (message, remoteAddress) => {
   if (message.toString() === "EOF") {
     socket.send(
@@ -13,11 +13,11 @@ socket.on("message", async (message, remoteAddress) => {
       remoteAddress.address
     );
   } else {
-    writeStream.write(message);
+    await writeStream.write(message);
   }
 });
 
-socket.bind({ port: 4000 }, () => {
+socket.bind( 4000 ,"10.28.92.145",() => {
   console.log(socket.address());
   const address = socket.address();
   console.log(`Listening on port ${address.port}`);
