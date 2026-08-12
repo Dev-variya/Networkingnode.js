@@ -12,6 +12,7 @@ socket.on("message", async (message, remoteAddress) => {
       remoteAddress.port,
       remoteAddress.address
     );
+    
   } else {
     await writeStream.write(message);
   }
@@ -22,3 +23,10 @@ socket.bind( 4000 ,"10.28.92.145",() => {
   const address = socket.address();
   console.log(`Listening on port ${address.port}`);
 });
+// //public ip
+// socket.bind(4000, () => {
+//     console.log(socket.address());
+
+//     const address = socket.address();
+//     console.log(`Listening on port ${address.port}`);
+// });

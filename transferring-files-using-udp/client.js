@@ -12,8 +12,8 @@ socket.on("message", (message, remoteAddress) => {
 
 //anything u can send video , audio , text , PDF , JPEG.....
 const readStream = createReadStream(
-  "D:\\Dev document\\DevSignture.pdf", //mention file path here u want to send
-  { highWaterMark: 10000  } // Sends data using 10KB chunks. The transfer speed can be set anything, ensuring server-side write backpressure is respected.
+  "C:\\Users\\Dev\\Downloads\\Form6_preview.pdf", //mention file path here u want to send
+  { highWaterMark: 1000  } // Sends data using 10KB chunks. The transfer speed can be set anything, ensuring server-side write backpressure is respected.
 );
 
 readStream.on("data", (chunk) => {
@@ -21,7 +21,7 @@ readStream.on("data", (chunk) => {
 });
 
 readStream.on("end", () => {
-  socket.send("EOF", 4000, "10.28.92.145", () => {
+  socket.send("EOF", 4000, "10.28.92.145", () => {//SERVER_PUBLIC_IP
     console.log("File sent");
   });
 });
